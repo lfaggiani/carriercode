@@ -22,3 +22,52 @@ select,
 textarea {
     max-width: 280px;
 }
+
+img.icons {
+
+    width: 18px;
+    height: 18px;
+}
+
+tr:not(:first-of-type):hover {
+    background-color: lightgray;
+}
+
+.hiddenEl {
+    display:none;
+    padding: 0px;
+}
+
+img.hiddenEl {
+    float: left;
+}
+
+/*#wrapperDiv {
+    min-height: 300px;
+}*/
+
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+#wrapper {
+	min-height:100%;
+	position:relative;
+}
+
+#contentHome {
+	padding-bottom:100px; /* Height of the footer element */
+    min-height: 300px;
+}
+
+#footer {
+	width:100%;
+	height:100px;
+	position:absolute;
+	bottom:0;
+	left:20px;
+}
+

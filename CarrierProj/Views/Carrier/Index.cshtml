@@ -9,6 +9,16 @@
 <p>
     @Html.ActionLink("Criar", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Carrier", FormMethod.Get))
+{
+    <p>
+        Nome da Transportadora: @Html.TextBox("searchString")
+        <button type="submit" value="Filtrar">
+            <img src="~/Images/filter-32.png" class="icons" />
+        </button>
+    </p>
+}
 <table class="table">
     <tr>
         <th>

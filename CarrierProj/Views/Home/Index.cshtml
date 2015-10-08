@@ -2,11 +2,15 @@
     ViewBag.Title = "Home Page";
 }
 
-<hgroup>
-    <h1>Carriers</h1>
-    <h2>Just some text</h2>
-</hgroup>
-<article>
+<div id="contentHome">
+<header id="mainHeader">
+    <hgroup>
+        <h1>Carriers</h1>
+        <h2>What to do?</h2>
+    </hgroup>
+    <img src="~/Images/light-256.ico" class="hiddenEl" id="lightImg" height="100px" width="100px" />
+</header>
+<article id="mainArticle" class="hiddenEl">
     <p>
         We created a simple programming test to assess your knowledge and skill level. For this test you're required to built a simple web application, you need to build it with .Net c#.
     </p>
@@ -20,3 +24,6 @@
         We also whant to see if u can publish your own project, so we need u to create one website and publish your project in any server you whant (like Azure or AWS) and send us a link so we can access the "go-live" working version.
     </p>
 </article>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/default.js"></script>

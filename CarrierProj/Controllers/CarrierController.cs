@@ -18,25 +18,33 @@ namespace CarrierProj.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Carrier
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             string userID = User.Identity.GetUserId();
 
-            IQueryable<CarrierViewModel> data =     from c in db.Carriers
-                                                    from ur in db.UserRatings
-                                                    .Where(a => a.CarrierID == c.ID && a.ApplicationUserID == userID).DefaultIfEmpty()
+            var carriers = from c in db.Carriers
+                           select c;
 
-                                                    from rt in db.Rates
-                                                    .Where(rt => rt.ID == ur.RateID).DefaultIfEmpty()
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                carriers = carriers.Where(c => c.Name.Contains(searchString));
+            }
 
-                                                    select new CarrierViewModel()
-                                                    {
-                                                        ID = c.ID,
-                                                        Code = c.Code,
-                                                        Name = c.Name,
-                                                        UserRatingID = ur.ID,
-                                                        RateDescription = rt.Description
-                                                    };
+            IQueryable < CarrierViewModel > data = from c in carriers
+                                                   from ur in db.UserRatings
+                                                   .Where(a => a.CarrierID == c.ID && a.ApplicationUserID == userID).DefaultIfEmpty()
+
+                                                   from rt in db.Rates
+                                                   .Where(rt => rt.ID == ur.RateID).DefaultIfEmpty()
+
+                                                   select new CarrierViewModel()
+                                                   {
+                                                       ID = c.ID,
+                                                       Code = c.Code,
+                                                       Name = c.Name,
+                                                       UserRatingID = ur.ID,
+                                                       RateDescription = rt.Description
+                                                   };
             //return View(db.Carriers.ToList());
             return View(data.ToList());
         }
