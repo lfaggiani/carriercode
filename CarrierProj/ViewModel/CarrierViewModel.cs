@@ -18,7 +18,7 @@ namespace CarrierProj.ViewModel
 
         public int? UserRatingID { get; set; }
 
-        [Display(Name = "Classificação")]
+        [Display(Name = "Classificação"), DisplayFormat(NullDisplayText = "Sem Classificação")]
         public string RateDescription { get; set; }
     }
 }

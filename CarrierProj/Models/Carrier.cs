@@ -16,7 +16,7 @@ namespace CarrierProj.Models
         [Display(Name = "Nome"), Required, StringLength(100, MinimumLength = 3)]
         public string Name { get; set; }
 
-        [Display(Name = "Data de Criação"), DataType(DataType.Date)]
+        [Display(Name = "Data de Criação"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
 
         public virtual ICollection<UserRating> UserRatings { get; set; }
