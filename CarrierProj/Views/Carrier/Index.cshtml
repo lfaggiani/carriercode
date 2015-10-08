@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CarrierProj.ViewModel.CarrierViewModel>
+
+@{
+    ViewBag.Title = "Lista de transportadoras";
+}
+
+<h2>Transportadoras</h2>
+
+<p>
+    @Html.ActionLink("Criar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RateDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RateDescription)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.UserRat)
+        </td>*@
+        <td>
+            @if (item.UserRatingID == null)
+            { 
+              @Html.ActionLink("Classificar", "Create", "UserRating", new { CarrierID = item.ID }, new object())
+            }
+            else
+            { 
+                @Html.ActionLink("Classificar", "Edit", "UserRating", new {id = item.UserRatingID, CarrierID = item.ID }, new object())
+            }
+
+        </td>
+        <td>
+            
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Remover", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

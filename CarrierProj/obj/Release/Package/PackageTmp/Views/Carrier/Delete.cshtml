@@ -1,0 +1,48 @@
+﻿@model CarrierProj.Models.Carrier
+
+@{
+    ViewBag.Title = "Remover transportadora";
+}
+
+<h2>Remover</h2>
+
+<h3>Você tem certeza que deseja remover esse item?</h3>
+<div>
+    <h4>Transportadora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover " class="btn btn-default" />
+            @Html.ActionLink("Voltar para lista", "Index")
+        </div>
+    }
+</div>
